@@ -168,8 +168,8 @@ def profile(response):
 			t['Profile']=RetProlist
 			return HttpResponse(json.dumps(t), content_type="application/json")
 		else:
-			return HttpResponse(json.dumps("{'error':'Invalid Token'}"), content_type="application/json")
+			return HttpResponse(json.dumps({'error':'Invalid Token'}), content_type="application/json")
 
 	else:
-		return HttpResponse(json.dumps("{'error':'No token provided'}"), content_type="application/json")
+		return HttpResponse(json.dumps({'error':'No token provided'}), content_type="application/json")
 
