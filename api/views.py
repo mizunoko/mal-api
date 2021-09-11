@@ -34,10 +34,11 @@ def profile(response):
 	ltokens=[]
 	for token in tokens:
 		ltokens.append(token.token)
-	headers=request.headers
+	headers=response.headers
 	print(headers)
-	if headers.get('token'):
-		if headers['token'] in ltokens:
+	if 'Token' in headers:
+		print(ltokens)
+		if headers['Token'] in ltokens:
 			u=response.GET.get('username', '')
 			url=f'https://myanimelist.net/profile/{u}'
 			#print(url)
@@ -166,5 +167,9 @@ def profile(response):
 			print(datetime.datetime.now()-begin)
 			t['Profile']=RetProlist
 			return HttpResponse(json.dumps(t), content_type="application/json")
-	return HttpResponse('Check Console')
+		else:
+			return HttpResponse(json.dumps("{'error':'Invalid Token'}"), content_type="application/json")
+
+	else:
+		return HttpResponse(json.dumps("{'error':'No token provided'}"), content_type="application/json")
 
