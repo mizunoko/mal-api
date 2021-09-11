@@ -5,3 +5,4 @@ ast
 html
 lxml
 cchardet
+gunicorn
