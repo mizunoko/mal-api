@@ -1,7 +1,6 @@
 django
 bs4
 requests
-ast
 html
 lxml
 cchardet
